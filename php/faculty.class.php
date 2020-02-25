@@ -1,0 +1,81 @@
+<?php
+date_default_timezone_set("Asia/Bangkok");
+require_once('db.class.php');
+
+/**
+ * Faculty Class
+ *
+ * @category  Classes and Objects
+ * @package   SQL Serevr
+ * @author    Jiramet Kaewsiri <jirametk@lanna.co.th>
+ * @copyright Copyright (c) 2018
+ * @license   -
+ * @version   1.0
+ *
+ **/
+
+Class Faculty {
+
+    public function get(){
+
+        // $array = array();
+
+        // $sql = "SELECT * FROM Faculty";
+
+        // $result = $GLOBALS['db']->query($sql);
+
+        // while ($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)) {
+        //     $array[] = $row;
+        // }
+
+        // return $array;
+
+    }
+
+    public function set($params = array()){
+
+        $sql = "INSERT INTO Faculty VALUES ('{$params['id']}','{$params['name']}','{$params['shortname']}','{$params['uid']}','{$params['desc']}',getdate(),getdate())";
+
+        $result = $GLOBALS['db']->query($sql);
+
+        //return $result;
+    }
+
+    public function update($params = array()){
+
+        // $sql = "UPDATE Faculty SET 
+        //         Faculty_Name = '{$params['name']}',
+        //         Logo            = '{$params['logo']}',
+        //         Description     = '{$params['desc']}',
+        //         Updated         =  getdate().
+        //         WHERE Faculty_ID = '{$params['id']}'";
+
+        // $result = $GLOBALS['db']->query($sql);
+
+    }
+
+
+    public function delete($params = array()){
+
+        $sql = "DELETE FROM Faculty WHERE Faculty_ID = '{$params['id']}'";
+
+        $result = $GLOBALS['db']->query($sql);
+
+    }
+
+    public function search($params = array()){
+
+        $array = array();
+
+        $sql = "SELECT * FROM Faculty WHERE University_ID = '{$params['id']}'";
+
+        $result = $GLOBALS['db']->query($sql);
+
+        while ($row = sqlsrv_fetch_array($result,SQLSRV_FETCH_ASSOC)) {
+            $array[] = $row;
+        }
+
+        return $array;
+
+    }
+}
